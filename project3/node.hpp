@@ -5,21 +5,22 @@
 
 using namespace std;
 
+// int const numOfCharacter = 26;
+
 class node
 {
-    private:
-        node *children;
-        node *parent;
-        bool terminal;
-        int const numOfCharacter = 26;
-        std::string letter;
+private:
+    node *children[26];
+    node *parent;
+    bool terminal;
+    std::string character;
 
     friend class trie;
 
-    public:
-        node();
-        ~node();
+public:
+    node();
 
+    ~node();
 };
 
 #endif

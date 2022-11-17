@@ -1,7 +1,7 @@
 #ifndef TRIE_HPP
 #define TRIE_HPP
 
-#include <node.hpp>
+#include "node.hpp"
 #include <string>
 
 using namespace std;
@@ -9,7 +9,8 @@ using namespace std;
 class trie
 {
     private:
-        int size;
+        int trieSize;
+        node *root;
 
     public:
         trie();
