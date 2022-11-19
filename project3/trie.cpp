@@ -17,11 +17,10 @@ void trie::trieload(){
 
 };
 
-void trie::insertion(string word){
+void trie::insertion(string word)
+{
 
     node *p_insertion = root;
-
-
 };
 
 void trie::searching(string word){
@@ -40,11 +39,15 @@ void trie::spellcheck(string word){
 
 };
 
-bool trie::empty(){
-    if(trieSize == 0){
+bool trie::empty()
+{
+    if (trieSize == 0)
+    {
         cout << "empty 1" << endl;
         return true;
-    }else if(trieSize > 0){
+    }
+    else if (trieSize > 0)
+    {
         cout << "empty 0" << endl;
         return false;
     }
@@ -52,11 +55,10 @@ bool trie::empty(){
 
 void trie::clear(){
 
-
 };
 
-void trie::countSize(){
+void trie::countSize()
+{
 
     cout << "number of words is " << trieSize << endl;
-
 };
