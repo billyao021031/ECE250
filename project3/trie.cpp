@@ -6,6 +6,7 @@ using namespace std;
 
 trie::trie()
 {
+    trieSize = 0;
     root = NULL;
 }
 
@@ -21,9 +22,21 @@ void trie::insertion(string word)
 {
 
     node *p_insertion = root;
+
+    int i = 0;
+
+    while(i < word.length()){
+        int pos = word[i] - 'a';
+
+        
+        i++;
+    }
 };
 
 void trie::searching(string word){
+    
+
+
 
 };
 
@@ -49,8 +62,9 @@ bool trie::empty()
     else if (trieSize > 0)
     {
         cout << "empty 0" << endl;
-        return false;
     }
+
+    return false;
 };
 
 void trie::clear(){

@@ -1,6 +1,6 @@
 #include <iostream>
-#include <node.hpp>
-#include <trie.hpp>
+#include "node.hpp"
+#include "trie.hpp"
 
 using namespace std;
 
