@@ -33,7 +33,11 @@ int main()
         {
             string sword;
             cin >> sword;
-            trie.searching(sword);
+            if(trie.searching(sword) == true){
+                cout << "found word" << endl;
+            }else{
+                cout << "not found" << endl;
+            }
         }
 
         // if command is "e", erase a target word from the trie.

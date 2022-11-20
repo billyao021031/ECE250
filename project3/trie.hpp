@@ -18,15 +18,15 @@ class trie
 
         void trieload();
 
-        void insertion(string word);
+        void insertion(string input);
 
-        void searching(string word);
+        bool searching(string input);
 
-        void erase(string word);
+        void erase(string input);
 
         void print();
 
-        void spellcheck(string word);
+        void spellcheck(string input);
 
         bool empty();
 

@@ -11,7 +11,6 @@ class node
 {
 private:
     node *children[26];
-    node *parent;
     bool terminal;
     std::string character;
 
@@ -21,6 +20,8 @@ public:
     node();
 
     ~node();
+
+    int numOfChildren(node *p_count);
 };
 
 #endif
