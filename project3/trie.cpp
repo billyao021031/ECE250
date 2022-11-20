@@ -14,22 +14,12 @@ trie::~trie()
 {
 }
 
-void trie::trieload(){
-
-};
-
 void trie::insertion(string input)
 {
     // if the word is found to be in the trie, then fail insertion.
-    if (searching(input) == true)
-    {
-        cout << "failure" << endl;
-    }
-    else if (searching(input) == false)
+    if (searching(input) == false)
     {
         trieSize += 1;
-
-        cout << "success" << endl;
 
         node *p_insertion = root; // set the initial traversing pointer to be at root.
 
@@ -112,9 +102,19 @@ void trie::erase(string input)
 
 void trie::print()
 {
-    node *p_print = root;
+    node *print = root;
     string targetWord;
+    print_h(print, targetWord);
+    cout << endl;
+    print = nullptr;
+    delete print;
 };
+
+void trie::print_h(node *print, string targetWord){
+    // if(print->terminal == false && print->children != NULL){
+    //     targetWord.push_back(print->character[0]);
+    // }
+}
 
 void trie::spellcheck(string input){
 

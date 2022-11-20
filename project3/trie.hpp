@@ -26,6 +26,8 @@ class trie
 
         void print();
 
+        void print_h(node *p, string targetWord);
+
         void spellcheck(string input);
 
         bool empty();

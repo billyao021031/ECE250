@@ -12,7 +12,7 @@ class node
 private:
     node *children[26];
     bool terminal;
-    std::string character;
+    string character;
 
     friend class trie;
 
