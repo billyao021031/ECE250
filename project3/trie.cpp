@@ -39,7 +39,6 @@ void trie::insertion(string input)
         {
             int pos = input[j] - 'a';
 
-            
             // if children of the node at the destinated index is not empty, traverse to the next node.
             if (p_insertion->children[pos] != NULL)
             {
@@ -62,7 +61,6 @@ void trie::insertion(string input)
     }
 };
 
-
 bool trie::searching(string input)
 {
     node *p_find = root; // set the initial traversing pointer to be at root.
@@ -80,7 +78,7 @@ bool trie::searching(string input)
             p_find = p_find->children[pos];
         }
         // if children of the node at the destinated index is empty, no such word is found.
-        else if(p_find->children[pos] == NULL)
+        else if (p_find->children[pos] == NULL)
         {
             return foundWord;
         }
@@ -88,7 +86,7 @@ bool trie::searching(string input)
         j++;
     }
 
-    //if the last node is a termination of the word, the word exists in the trie.
+    // if the last node is a termination of the word, the word exists in the trie.
     if (p_find->terminal == true)
     {
         foundWord = true;
@@ -100,16 +98,23 @@ bool trie::searching(string input)
     return foundWord;
 };
 
+void trie::erase(string input)
+{
+    if (searching(input) == false || trieSize == 0)
+    {
+        cout << "failure" << endl;
+    }
+    else if(searching(input) == true)
+    {
 
-void trie::erase(string input){
-
+    }
 };
 
-
-void trie::print(){
-
+void trie::print()
+{
+    node *p_print = root;
+    string targetWord;
 };
-
 
 void trie::spellcheck(string input){
 
@@ -130,10 +135,13 @@ bool trie::empty()
     return false;
 };
 
-void trie::clear(){
+void trie::clear()
+{
 
+    trieSize = 0;
+
+    cout << "success" << endl;
 };
-
 
 void trie::countSize()
 {
