@@ -109,34 +109,10 @@ void trie::erase(string input)
 
 void trie::erase_h(node *erase, string input, int pos)
 {
-
     int index = input[pos] - 'a'; // get the index of the current character
 
-    //delete "andy" with (and andy)
-
-    /*
-    1. "a", root的下一个children是a，a不是terminal，进入第一个condition：因为a有children，所以进入第二个else if，position +=1, 
-    */
-    if ((erase->children[index])->terminal == true && pos == input.length() - 1)
-    {
-        if ((erase->children[index])->numOfChildren((erase->children[index])) == 0)
-        {
-            int index = input[pos - 1] - 'a';
-            erase->children[index] = NULL;
-            delete erase->children[index];
-            cout << "delete all the letter" << endl;
-        }
-        else if ((erase->children[index])->numOfChildren((erase->children[index])) != 0)
-        {
-            int index = input[pos - 1] - 'a';
-            (erase->children[index])->terminal = false;
-            (erase->children[index])->pushed = false;
-            cout << "erase terminal" << endl;
-        }
-        trieSize -= 1;
-    }
-    else
-    {   
+    if((erase->children[index])->terminal == false || pos != input.length() - 1)
+    {  
          if ((erase->children[index]) != NULL)
         {
             cout << "current character " << erase->children[index]->character << endl;
@@ -146,10 +122,27 @@ void trie::erase_h(node *erase, string input, int pos)
 
             if (((erase->children[index])->terminal == false) && (((erase->children[index])->numOfChildren((erase->children[index])))==0) && (erase->children[index] != root))
             {
+                cout << "delete character " << erase->children[index]->character << endl;
                 erase->children[index] = NULL;
                 delete erase->children[index];
             }
         }
+    }
+    else if ((erase->children[index])->terminal == true && pos == input.length() - 1)
+    {
+        if ((erase->children[index])->numOfChildren((erase->children[index])) == 0)
+        {
+            cout << "delete " << erase->children[index]->character << endl;
+            erase->children[index] = NULL;
+            delete erase->children[index];
+        }
+        else if ((erase->children[index])->numOfChildren((erase->children[index])) != 0)
+        {
+            (erase->children[index])->terminal = false;
+            (erase->children[index])->pushed = false;
+            cout << "erase terminal" << endl;
+        }
+        trieSize -= 1;
     }
 };
 
