@@ -24,7 +24,7 @@ class trie
 
         void erase(string input);
 
-        void erase_h(node *p, string input, int iterator);
+        void erase_h(node *p, string input, int pos);
 
         void print();
 

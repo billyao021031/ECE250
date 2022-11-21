@@ -12,6 +12,7 @@ trie::trie()
 
 trie::~trie()
 {
+    clear();
 }
 
 void trie::insertion(string input)
@@ -46,7 +47,9 @@ void trie::insertion(string input)
             j++;
         }
         p_insertion->terminal = true;
+
         p_insertion = nullptr;
+
         delete p_insertion;
     }
 };
@@ -97,27 +100,56 @@ void trie::erase(string input)
     else if (searching(input) == true)
     {
         node *erase = root;
-        int i = 0;
-        erase_h(erase, input, i);
+        erase_h(erase, input, 0);
+        cout << "success" << endl;
         erase = nullptr;
         delete erase;
     }
 };
 
-void trie::erase_h(node *erase, string input, int iterator)
+void trie::erase_h(node *erase, string input, int pos)
 {
-    int pos = input[iterator] - 'a';
-    if (erase->terminal == true)
+
+    int index = input[pos] - 'a'; // get the index of the current character
+
+    //delete "andy" with (and andy)
+
+    /*
+    1. "a", root的下一个children是a，a不是terminal，进入第一个condition：因为a有children，所以进入第二个else if，position +=1, 
+    */
+    if ((erase->children[index])->terminal == true && pos == input.length() - 1)
     {
-        if (erase->numOfChildren(erase) > 0)
+        if ((erase->children[index])->numOfChildren((erase->children[index])) == 0)
         {
+            int index = input[pos - 1] - 'a';
+            erase->children[index] = NULL;
+            delete erase->children[index];
+            cout << "delete all the letter" << endl;
         }
-        else if (erase->numOfChildren(erase) == 0)
+        else if ((erase->children[index])->numOfChildren((erase->children[index])) != 0)
         {
+            int index = input[pos - 1] - 'a';
+            (erase->children[index])->terminal = false;
+            (erase->children[index])->pushed = false;
+            cout << "erase terminal" << endl;
         }
+        trieSize -= 1;
     }
-    else if (erase->terminal == false)
-    {
+    else
+    {   
+         if ((erase->children[index]) != NULL)
+        {
+            cout << "current character " << erase->children[index]->character << endl;
+
+            pos += 1;
+            erase_h(erase->children[index], input, pos);
+
+            if (((erase->children[index])->terminal == false) && (((erase->children[index])->numOfChildren((erase->children[index])))==0) && (erase->children[index] != root))
+            {
+                erase->children[index] = NULL;
+                delete erase->children[index];
+            }
+        }
     }
 };
 
@@ -176,9 +208,13 @@ void trie::spellcheck(string input)
     else
     {
         node *p_check = root;
+
         spellcheck_h(p_check, input, 0);
+
         cout << endl;
+
         p_check = nullptr;
+
         delete p_check;
     }
 };
@@ -186,14 +222,14 @@ void trie::spellcheck(string input)
 void trie::spellcheck_h(node *p_spell, string input, int pos)
 {
 
-    int index = input[pos] - 'a'; //the index of the character
+    int index = input[pos] - 'a'; // the index of the character
 
-    //if the child of the character node is null, then we print the word starts with the traversed sub-string (ex. app)
+    // if the child of the character node is null, then we print the word starts with the traversed sub-string (ex. app)
     if (p_spell->children[index] == NULL)
     {
         print_h(p_spell, input.substr(0, pos - 1));
     }
-    //if the child of the character node is not null, then we recursively do the spellcheck 
+    // if the child of the character node is not null, then we recursively do the spellcheck.
     else if (p_spell->children[index] != NULL)
     {
         pos += 1;
@@ -212,8 +248,6 @@ void trie::clear()
     clear_h(p_clear);
 
     trieSize = 0;
-
-    cout << "success" << endl;
 
     p_clear = nullptr;
 

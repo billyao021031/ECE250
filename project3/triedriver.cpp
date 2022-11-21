@@ -88,6 +88,7 @@ int main()
         else if (command == "clear")
         {
             myTrie.clear();
+            cout << "success" << endl;
         }
 
         // if command is "size", count the number of words in the trie.
