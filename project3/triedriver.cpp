@@ -133,7 +133,14 @@ int main()
         {
             string checkword;
             cin >> checkword;
-            myTrie.spellcheck(checkword);
+            if (myTrie.searching(checkword) == true)
+            {
+                cout << "correct" << endl;
+            }
+            else
+            {
+                myTrie.spellcheck(checkword);
+            }
         }
 
         // if command is "empty", check is the trie is empty.

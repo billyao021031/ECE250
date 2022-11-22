@@ -1,8 +1,10 @@
 #include "node.hpp"
 #include <string>
 
+
 node::node()
 {
+    //initialize node member variables
     terminal = false;
     character = "";
     int i = 0;
@@ -15,6 +17,7 @@ node::node()
 
 node::~node()
 {
+    //destruct every node's children
     int i = 0;
     while (i < 26)
     {
@@ -28,6 +31,7 @@ node::~node()
 
 int node::numOfChildren(node *p_count)
 {
+    //return the number of children from a given node
     int num = 0;
 
     int j = 0;
