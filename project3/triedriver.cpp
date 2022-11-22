@@ -48,7 +48,7 @@ int main()
             cin >> sword;
             if (myTrie.searching(sword) == true)
             {
-                cout << "found word" << endl;
+                cout << "found " << sword << endl;
             }
             else
             {

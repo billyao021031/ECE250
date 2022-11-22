@@ -1,0 +1,19 @@
+load
+p
+size
+spellcheck tw
+e twelve
+s twelve
+spellcheck tw
+clear
+i and
+i andy
+i andrew
+size
+e andy
+s andy
+p
+spellcheck an
+spellcheck andrew
+spellcheck ladan
+exit
