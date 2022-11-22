@@ -24,4 +24,9 @@ public:
     int numOfChildren(node *p_count);
 };
 
+
+class illegal_exception  : public  std:: exception{
+
+};
+
 #endif

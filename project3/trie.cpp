@@ -13,6 +13,10 @@ trie::trie()
 trie::~trie()
 {
     clear_h(root);
+
+    delete root;
+
+    root = nullptr;
 }
 
 void trie::insertion(string input)
@@ -213,7 +217,6 @@ void trie::spellcheck(string input)
 
 void trie::spellcheck_h(node *p_spell, string input, int pos)
 {
-
     int index = input[pos] - 'a'; // the index of the character
 
     // if the child of the character node is null, then we print the word starts with the traversed sub-string (ex. app)
@@ -222,7 +225,7 @@ void trie::spellcheck_h(node *p_spell, string input, int pos)
         print_h(p_spell, input.substr(0, pos - 1));
     }
     // if the child of the character node is not null, then we recursively do the spellcheck.
-    else if (p_spell->children[index] != NULL && pos < input.length())
+    else if (p_spell->children[index] != NULL)
     {
         pos += 1;
         spellcheck_h(p_spell->children[index], input, pos);

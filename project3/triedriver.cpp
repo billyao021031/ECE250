@@ -31,13 +31,34 @@ int main()
         {
             string iword;
             cin >> iword;
-            if (myTrie.searching(iword) == true)
+
+            try
             {
-                cout << "failure" << endl;
+                int k = 0;
+
+                while (k < iword.length())
+                {
+                    int var = iword[k];
+                    if ((var < 97) || (var > 122))
+                    {
+                        throw illegal_exception();
+                    }
+                    k++;
+                }
+
+                if (myTrie.searching(iword) == true)
+                {
+                    cout << "failure" << endl;
+                }
+                else
+                {
+                    myTrie.insertion(iword);
+                    cout << "success" << endl;
+                }
             }
-            else{
-                myTrie.insertion(iword);
-                cout << "success" << endl;
+            catch (const std::exception &ill)
+            {
+                cout << "illegal argument" << endl;
             }
         }
 
@@ -46,13 +67,32 @@ int main()
         {
             string sword;
             cin >> sword;
-            if (myTrie.searching(sword) == true)
+            try
             {
-                cout << "found " << sword << endl;
+                int k = 0;
+
+                while (k < sword.length())
+                {
+                    int var = sword[k];
+                    if ((var < 97) || (var > 122))
+                    {
+                        throw illegal_exception();
+                    }
+                    k++;
+                }
+
+                if (myTrie.searching(sword) == true)
+                {
+                    cout << "found " << sword << endl;
+                }
+                else
+                {
+                    cout << "not found" << endl;
+                }
             }
-            else
+            catch (const std::exception &ill)
             {
-                cout << "not found" << endl;
+                cout << "illegal argument" << endl;
             }
         }
 
@@ -61,7 +101,25 @@ int main()
         {
             string eword;
             cin >> eword;
-            myTrie.erase(eword);
+            try
+            {
+                int k = 0;
+
+                while (k < eword.length())
+                {
+                    int var = eword[k];
+                    if ((var < 97) || (var > 122))
+                    {
+                        throw illegal_exception();
+                    }
+                    k++;
+                }
+                myTrie.erase(eword);
+            }
+            catch (const std::exception &ill)
+            {
+                cout << "illegal argument" << endl;
+            }
         }
 
         // if command is "p", print all the word in the trie.
