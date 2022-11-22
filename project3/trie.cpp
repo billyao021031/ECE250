@@ -231,10 +231,8 @@ void trie::spellcheck_h(node *p_spell, string input, int pos)
     }
     else{
     // if the child of the character node is null, then we print the word starts with the traversed sub-string (ex. app)
-    if (p_spell->children[index] == NULL && pos == input.length())
+    if (p_spell->children[index] == NULL || pos == input.length() || p_spell->numOfChildren(p_spell) == 0)
     {
-        cout << p_spell->character << endl;
-        cout << input.substr(0, pos-1) << endl;
         print_h(p_spell, input.substr(0, pos - 1));
     }
     // if the child of the character node is not null, then we recursively do the spellcheck.
