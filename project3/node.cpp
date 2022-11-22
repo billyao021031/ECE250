@@ -4,7 +4,6 @@
 node::node()
 {
     terminal = false;
-    pushed = false;
     character = "";
     int i = 0;
     while (i < 26)
@@ -19,8 +18,10 @@ node::~node()
     int i = 0;
     while (i < 26)
     {
-        this->children[i] = nullptr;
         delete this->children[i];
+
+        this->children[i] = NULL;
+
         i++;
     }
 }

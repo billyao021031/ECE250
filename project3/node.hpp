@@ -13,7 +13,6 @@ private:
     node *children[26];
     bool terminal;
     string character;
-    bool pushed;
 
     friend class trie;
 

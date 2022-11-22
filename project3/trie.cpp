@@ -12,7 +12,7 @@ trie::trie()
 
 trie::~trie()
 {
-    clear();
+    clear_h(root);
 }
 
 void trie::insertion(string input)
@@ -123,8 +123,8 @@ void trie::erase_h(node *erase, string input, int pos)
             if (((erase->children[index])->terminal == false) && (((erase->children[index])->numOfChildren((erase->children[index]))) == 0) && (erase->children[index] != root))
             {
                 // cout << "delete character " << erase->children[index]->character << endl;
-                erase->children[index] = NULL;
                 delete erase->children[index];
+                erase->children[index] = NULL;
             }
         }
     }
@@ -133,13 +133,12 @@ void trie::erase_h(node *erase, string input, int pos)
         if ((erase->children[index])->numOfChildren((erase->children[index])) == 0)
         {
             // cout << "delete " << erase->children[index]->character << endl;
-            erase->children[index] = NULL;
             delete erase->children[index];
+            erase->children[index] = NULL;
         }
         else if ((erase->children[index])->numOfChildren((erase->children[index])) != 0)
         {
             (erase->children[index])->terminal = false;
-            (erase->children[index])->pushed = false;
         }
         trieSize -= 1;
     }
@@ -161,13 +160,11 @@ void trie::print_h(node *print, string targetWord)
     if (print->terminal == true)
     {
         targetWord.push_back(print->character[0]);
-        print->pushed = true;
         cout << targetWord << " ";
     }
-    else if (print->numOfChildren(print) > 1)
+    else if (print->numOfChildren(print) > 0)
     {
         targetWord.push_back(print->character[0]);
-        print->pushed = true;
     }
 
     int j = 0;
@@ -175,19 +172,13 @@ void trie::print_h(node *print, string targetWord)
     {
         if (print->children[j] != NULL)
         {
-            if (print->pushed == true)
-            {
-                print_h(print->children[j], targetWord);
-            }
-            else if (print->pushed == false)
-            {
-                targetWord.push_back(print->character[0]);
-                print_h(print->children[j], targetWord);
-            }
+            print_h(print->children[j], targetWord);
         }
 
         j++;
     }
+
+    targetWord.pop_back();
 }
 
 void trie::spellcheck(string input)
@@ -200,6 +191,15 @@ void trie::spellcheck(string input)
     else
     {
         node *p_check = root;
+
+        int check_index = input[0] - 'a';
+
+        if (p_check->children[check_index] == NULL)
+        {
+            cout << endl;
+
+            return;
+        }
 
         spellcheck_h(p_check, input, 0);
 
@@ -216,20 +216,6 @@ void trie::spellcheck_h(node *p_spell, string input, int pos)
 
     int index = input[pos] - 'a'; // the index of the character
 
-    if (p_spell == root)
-    {
-        if (p_spell->children[index] == NULL)
-        {
-            return;
-
-        }else if(p_spell->children[index] != NULL){
-
-            pos += 1; 
-
-            spellcheck_h(p_spell->children[index ], input, pos);
-        }
-    }
-    else{
     // if the child of the character node is null, then we print the word starts with the traversed sub-string (ex. app)
     if (p_spell->children[index] == NULL || pos == input.length() || p_spell->numOfChildren(p_spell) == 0)
     {
@@ -241,9 +227,9 @@ void trie::spellcheck_h(node *p_spell, string input, int pos)
         pos += 1;
         spellcheck_h(p_spell->children[index], input, pos);
     }
-    }
 
     p_spell = nullptr;
+
     delete p_spell;
 }
 
@@ -276,6 +262,8 @@ void trie::clear_h(node *clear)
         if (clear->children[j] != NULL)
         {
             clear_h(clear->children[j]);
+
+            delete clear->children[j];
 
             clear->children[j] = NULL;
         }
