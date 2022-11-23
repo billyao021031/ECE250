@@ -30,13 +30,13 @@ class trie
         void erase(string input);
 
         //erase recursive function
-        void erase_h(node *p, string input, int pos);
+        void erase_h(node *erase, string input, int pos);
 
         //print all the words in the trie
         void print();
 
         //print recursive function
-        void print_h(node *p, string targetWord);
+        void print_h(node *print, string targetWord);
 
         //spellcheck a word based on the trie
         void spellcheck(string input);
