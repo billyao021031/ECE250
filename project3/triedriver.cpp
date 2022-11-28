@@ -161,5 +161,8 @@ int main()
         {
             myTrie.countSize();
         }
+        else{
+            return 0;
+        }
     }
 }

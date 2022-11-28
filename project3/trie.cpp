@@ -295,5 +295,5 @@ bool trie::empty()
 void trie::countSize()
 {
 
-    cout << "number of words is " << trieSize << endl;
+    cout << "number of words is: " << trieSize << endl;
 };
