@@ -8,4 +8,6 @@ Project 1 (Queue & Stack): The goal of this project is to design and implement a
 
 Project 2 (Hashtable): In this project, you will implement a hash table data structure for storing student records. Students are represented by a student number (stored as an unsigned int) and a last name (stored as a single string without spaces or special characters). 
 
-Project 3:
+Project 3 (Tree): 
+
+Project 4 (Graph):
