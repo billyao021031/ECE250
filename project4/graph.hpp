@@ -1,5 +1,8 @@
-#define GRAPH_HPP
 #ifndef GRAPH_HPP
+#define GRAPH_HPP
+
+#include <iostream>
+#include "vertex.hpp"
 
 using namespace std;
 
@@ -7,7 +10,6 @@ class graph
 {
 private:
     int vertex_num;
-    int edge_num;
 
 public:
 
@@ -15,13 +17,15 @@ public:
 
     ~graph();
 
-    insertion(int a, int b, int w);
+    void insertion(int a, int b, double w);
 
-    print(int a);
+    void print(int a);
 
-    delete(int a);
+    void deletion(int a);
 
-         
+    void getMST(int a);
+
+    int getSize();
 };
 
 

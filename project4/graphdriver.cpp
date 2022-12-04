@@ -11,6 +11,12 @@ int main()
     while (command != "exit")
     {
         cin >> command;
+        graph mygraph;
+
+        int id_1;
+        int id_2;
+        double weight;
+
         ifstream fin("paperCollabWeighted.txt");
 
         if (command == "load")
@@ -18,12 +24,18 @@ int main()
         }
         else if (command == "i")
         {
+            cin >> id_1 >> id_2 >> weight;
+            mygraph.insertion(id_1, id_2, weight);
         }
         else if (command == "p")
         {
+            cin >> id_1;
+            mygraph.print(id_1);
         }
         else if (command == "d")
         {
+            cin >> id_1;
+            mygraph.deletion(id_1);
         }
         else if (command == "mst")
         {
@@ -31,7 +43,8 @@ int main()
         else if (command == "size")
         {
         }
-        else{
+        else
+        {
             return 0;
         }
     }
