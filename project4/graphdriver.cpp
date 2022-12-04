@@ -7,20 +7,21 @@ using namespace std;
 int main()
 {
     string command = "";
+    graph mygraph;
 
     while (command != "exit")
     {
         cin >> command;
-        graph mygraph;
+        ifstream fin("paperCollabWeighted.txt");
 
         int id_1;
         int id_2;
         double weight;
-
-        ifstream fin("paperCollabWeighted.txt");
+        string addId;
 
         if (command == "load")
         {
+            
         }
         else if (command == "i")
         {
