@@ -1,6 +1,8 @@
 #include "vertex.hpp"
 
 vertex::vertex(){
+    m_key = -1;
+    id = 0;
     inserted = false;
     adj_vertex.resize(0);
     adj_weight.resize(0);

@@ -12,7 +12,9 @@ class graph
 private:
     int vertex_num; //  number of vertices in the graph
     int edge_num; //number of edges in the graph
-    vertex vArr[23133]; //array that contains 23133 number of vertices
+    vertex *vArr[23133]; //array that contains 23133 number of vertices
+    vector<vertex*> heap;
+    vector<int> mst;
 
 public:
 
@@ -33,6 +35,10 @@ public:
     bool findVertex(int id);
 
     bool findCombo(int id_1, int id_2);
+
+    void heapify(int id);
+
+    void heap_builder();
 };
 
 

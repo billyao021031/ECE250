@@ -13,7 +13,9 @@ using namespace std;
 class vertex
 {
 private:
+    int id;
     bool inserted;
+    double m_key;
     vector<int> adj_vertex;
     vector<double> adj_weight;
     vector<int> parent_vertex;

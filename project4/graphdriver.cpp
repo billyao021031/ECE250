@@ -30,7 +30,13 @@ int main()
         else if (command == "i")
         {
             cin >> id_1 >> id_2 >> weight;
-            mygraph.insertion(id_1, id_2, weight);
+            bool is_find = mygraph.findCombo(id_1, id_2);
+            if(is_find == false){
+                mygraph.insertion(id_1, id_2, weight);
+                cout << "success" << endl;
+            }else{
+                cout << "failure" << endl;
+            }
         }
         else if (command == "p")
         {
