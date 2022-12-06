@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "vertex.hpp"
+#include "edge.hpp"
 #include "illegal_exception.hpp"
 
 using namespace std;
@@ -12,6 +13,7 @@ class graph
 private:
     int vertex_num; //  number of vertices in the graph
     int edge_num; //number of edges in the graph
+    vector<edge> edgeArr; 
     vertex vArr[23133]; //array that contains 23133 number of vertices
 
 public:
@@ -29,10 +31,6 @@ public:
     void getMST(int a);
 
     int getSize();
-
-    bool findVertex(int id);
-
-    bool findCombo(int id_1, int id_2);
 };
 
 

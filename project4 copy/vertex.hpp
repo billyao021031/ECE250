@@ -13,10 +13,9 @@ using namespace std;
 class vertex
 {
 private:
-    bool inserted;
-    vector<int> adj_vertex;
-    vector<double> adj_weight;
-    vector<int> parent_vertex;
+    vector<int> vAdj; //vector of neighbour vertices
+    vector<int> vEdge; //vector of 
+    bool v_inserted;
 
 friend class graph;
 
