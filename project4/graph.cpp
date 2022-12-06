@@ -11,9 +11,11 @@ graph::graph()
     edge_num = 0;
 }
 
+
 graph::~graph()
 {
 }
+
 
 bool graph::findVertex(int id)
 {
@@ -27,6 +29,7 @@ bool graph::findVertex(int id)
     }
 }
 
+
 bool graph::findCombo(int id_1, int id_2)
 {
     for (int i = 0; i < vArr[id_1 - 1].adj_vertex.size(); i++)
@@ -39,6 +42,7 @@ bool graph::findCombo(int id_1, int id_2)
 
     return false;
 }
+
 
 void graph::insertion(int id_1, int id_2, double weight)
 {
@@ -76,34 +80,16 @@ void graph::insertion(int id_1, int id_2, double weight)
             vertex_num += 1;
         }
 
+        edge_num += 1;
+
         cout << "success" << endl;
     }
     else
     {
         cout << "failure" << endl;
     }
-
-    // cout << "adjacent nodes at " << id_1 << endl;
-    // for (int i = 0; i < vArr[id_1 - 1].adj_vertex.size(); i++)
-    // {
-    //     cout << vArr[id_1 - 1].adj_vertex.at(i) << " ";
-    // }
-    // cout << endl;
-
-    // cout << "adjacent weight at " << id_1 << endl;
-    // for (int i = 0; i < vArr[id_1 - 1].adj_weight.size(); i++)
-    // {
-    //     cout << vArr[id_1 - 1].adj_weight.at(i) << " ";
-    // }
-    // cout << endl;
-
-    // cout << "parent nodes at " << id_2 << endl;
-    // for (int i = 0; i < vArr[id_2 - 1].parent_vertex.size(); i++)
-    // {
-    //     cout << vArr[id_2 - 1].parent_vertex.at(i) << " ";
-    // }
-    // cout << endl;
 }
+
 
 void graph::print(int id)
 {
@@ -126,6 +112,7 @@ void graph::print(int id)
     }
     cout << endl;
 }
+
 
 void graph::deletion(int id)
 {
@@ -169,9 +156,11 @@ void graph::deletion(int id)
     }
 }
 
+
 void graph::getMST(int id)
 {
 }
+
 
 int graph::getSize()
 {
