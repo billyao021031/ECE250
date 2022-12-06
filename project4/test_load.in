@@ -1,0 +1,11 @@
+load
+d 1
+size
+i 1 100 0.5
+mst 1
+d 1
+mst 2
+mst 23055
+d 23055
+mst 5060
+exit

@@ -56,18 +56,6 @@ bool graph::findCombo(int id_1, int id_2)
 
 void graph::insertion(int id_1, int id_2, double weight)
 {
-    try
-    {
-        if (id_1 > 23133 || id_1 < 1 || id_2 > 23133 || id_2 < 1 || weight < 0.0 || weight > 1.0)
-        {
-            throw illegal_exception();
-        }
-    }
-    catch (illegal_exception alert)
-    {
-        cout << alert.msg() << endl;
-        return;
-    }
 
     vArr[id_1 - 1]->adj_vertex.push_back(id_2);
     vArr[id_1 - 1]->adj_weight.push_back(weight);
@@ -92,18 +80,6 @@ void graph::insertion(int id_1, int id_2, double weight)
 
 void graph::print(int id)
 {
-    try
-    {
-        if (id > 23133 || id < 1)
-        {
-            throw illegal_exception();
-        }
-    }
-    catch (illegal_exception alert)
-    {
-        cout << alert.msg() << endl;
-        return;
-    }
 
     for (int i = 0; i < vArr[id - 1]->adj_vertex.size(); i++)
     {
@@ -114,18 +90,6 @@ void graph::print(int id)
 
 void graph::deletion(int id)
 {
-    try
-    {
-        if (id > 23133 || id < 1)
-        {
-            throw illegal_exception();
-        }
-    }
-    catch (illegal_exception alert)
-    {
-        cout << alert.msg() << endl;
-        return;
-    }
 
     if (findVertex(id) == false || vertex_num == 0)
     {
@@ -211,12 +175,11 @@ void graph::getMST(int id)
                 }
                 i++;
             }
-            // std::cout << "search " << search << std::endl;
+
             if (search == false)
             {
                 mst.push_back(MST->id);
             }
-            // std::cout << "last " << mst.back() << std::endl;
 
             for (int k = 0; k < MST->adj_vertex.size(); k++)
             {
@@ -226,11 +189,7 @@ void graph::getMST(int id)
                     heap_builder();
                 }
             }
-            // for(int i =0; i < heap.size(); i ++)
-            // {
-            //     std::cout << heap[i]->m_key << "/" << heap[i]->id << " ";
-            // }
-            // std::cout << std::endl;
+
         }
     }
 
@@ -277,9 +236,6 @@ void graph::heapify(int id)
     if (largest != id)
     {
         swap(heap[id], heap[largest]);
-        // vertex *temp = heap[id];
-        // heap[id] = heap[largest];
-        // heap[largest] = temp;
 
         if (largest < (heap.size() / 2))
         {

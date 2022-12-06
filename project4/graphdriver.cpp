@@ -30,23 +30,71 @@ int main()
         else if (command == "i")
         {
             cin >> id_1 >> id_2 >> weight;
-            bool is_find = mygraph.findCombo(id_1, id_2);
-            if(is_find == false){
-                mygraph.insertion(id_1, id_2, weight);
-                cout << "success" << endl;
-            }else{
-                cout << "failure" << endl;
+
+            try
+            {
+                if (id_1 > 23133 || id_1 < 1 || id_2 > 23133 || id_2 < 1 || weight < 0.0 || weight > 1.0)
+                {
+                    throw illegal_exception();
+                }
+                else
+                {
+                    bool is_find = mygraph.findCombo(id_1, id_2);
+                    if (is_find == false)
+                    {
+                        mygraph.insertion(id_1, id_2, weight);
+                        cout << "success" << endl;
+                    }
+                    else
+                    {
+                        cout << "failure" << endl;
+                    }
+                }
+            }
+            catch (illegal_exception alert)
+            {
+                cout << alert.msg() << endl;
             }
         }
         else if (command == "p")
         {
             cin >> id_1;
-            mygraph.print(id_1);
+
+            try
+            {
+                if (id_1 > 23133 || id_1 < 1)
+                {
+                    throw illegal_exception();
+                }
+                else
+                {
+                    mygraph.print(id_1);
+                }
+            }
+            catch (illegal_exception alert)
+            {
+                cout << alert.msg() << endl;
+            }
         }
         else if (command == "d")
         {
             cin >> id_1;
-            mygraph.deletion(id_1);
+
+            try
+            {
+                if (id_1 > 23133 || id_1 < 1)
+                {
+                    throw illegal_exception();
+                }
+                else
+                {
+                    mygraph.deletion(id_1);
+                }
+            }
+            catch (illegal_exception alert)
+            {
+                cout << alert.msg() << endl;
+            }
         }
         else if (command == "mst")
         {
