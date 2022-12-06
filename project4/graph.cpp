@@ -159,6 +159,9 @@ void graph::deletion(int id)
 
 void graph::getMST(int id)
 {
+    if(findVertex(id) == false || vertex_num == 0){
+        cout << "failure" << endl;
+    }
 }
 
 

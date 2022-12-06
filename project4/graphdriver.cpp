@@ -44,6 +44,8 @@ int main()
         }
         else if (command == "mst")
         {
+            cin >> id_1;
+            mygraph.getMST(id_1);
         }
         else if (command == "size")
         {
