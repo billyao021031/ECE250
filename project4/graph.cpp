@@ -36,13 +36,6 @@ bool graph::findCombo(int id_1, int id_2)
             return true;
         }
     }
-    for (int i = 0; i < vArr[id_1 - 1].parent_vertex.size(); i++)
-    {
-        if (vArr[id_1 - 1].parent_vertex.at(i) == id_2)
-        {
-            return true;
-        }
-    }
 
     return false;
 }
@@ -162,9 +155,15 @@ void graph::deletion(int id)
         vArr[id - 1].inserted = false;
 
         for(int i = 0; i < vArr[id - 1].parent_vertex.size(); i++){
-            cout << vArr[id - 1].parent_vertex.at(i) << " ";
+            int parent_id = vArr[id - 1].parent_vertex.at(i);
+            for(int j = 0; j < vArr[parent_id - 1].adj_vertex.size(); j++){
+                if(vArr[parent_id - 1].adj_vertex.at(j) == id){
+                    vector<int>::iterator it;
+                    it = vArr[parent_id - 1].adj_vertex.begin();
+                    vArr[parent_id - 1].adj_vertex.erase(it + j);
+                }
+            }
         }
-        cout << endl;
 
         cout << "success" << endl;
     }
