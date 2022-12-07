@@ -17,8 +17,8 @@ int main()
         int id_1;
         int id_2;
         double weight;
-        string addId;
 
+        //load the data set
         if (command == "load")
         {
             while (fin >> id_1 >> id_2 >> weight)
@@ -27,6 +27,8 @@ int main()
             }
             cout << "success" << endl;
         }
+
+        //insertion
         else if (command == "i")
         {
             cin >> id_1 >> id_2 >> weight;
@@ -56,6 +58,8 @@ int main()
                 cout << alert.msg() << endl;
             }
         }
+
+        //printing
         else if (command == "p")
         {
             cin >> id_1;
@@ -76,6 +80,8 @@ int main()
                 cout << alert.msg() << endl;
             }
         }
+
+        //deletion
         else if (command == "d")
         {
             cin >> id_1;
@@ -96,15 +102,21 @@ int main()
                 cout << alert.msg() << endl;
             }
         }
+
+        //mst function
         else if (command == "mst")
         {
             cin >> id_1;
             mygraph.getMST(id_1);
         }
+
+        //size of vertices
         else if (command == "size")
         {
             mygraph.getSize();
         }
+
+        //empty
         else
         {
             return 0;

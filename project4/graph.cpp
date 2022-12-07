@@ -7,6 +7,7 @@ using namespace std;
 
 graph::graph()
 {
+    //dynamic allocate array 
     int j = 0;
     while (j < 23133)
     {
@@ -20,6 +21,7 @@ graph::graph()
 
 graph::~graph()
 {
+    //destruct the array
     int j = 0;
     while (j < 23133)
     {
@@ -31,6 +33,7 @@ graph::~graph()
 
 bool graph::findVertex(int id)
 {
+    //if the vertex is inserted, return true
     if (vArr[id - 1]->inserted == true)
     {
         return true;
@@ -43,6 +46,7 @@ bool graph::findVertex(int id)
 
 bool graph::findCombo(int id_1, int id_2)
 {
+    //if id_1 has a adjacent vertex id_2, return true.
     for (int i = 0; i < vArr[id_1 - 1]->adj_vertex.size(); i++)
     {
         if (vArr[id_1 - 1]->adj_vertex.at(i) == id_2)
@@ -56,7 +60,7 @@ bool graph::findCombo(int id_1, int id_2)
 
 void graph::insertion(int id_1, int id_2, double weight)
 {
-
+    //insert the info of id_1 and id_2 into corresponding vectors 
     vArr[id_1 - 1]->adj_vertex.push_back(id_2);
     vArr[id_1 - 1]->adj_weight.push_back(weight);
     vArr[id_2 - 1]->parent_vertex.push_back(id_1);
@@ -80,7 +84,7 @@ void graph::insertion(int id_1, int id_2, double weight)
 
 void graph::print(int id)
 {
-
+    //print the adjacency list of the vertex
     for (int i = 0; i < vArr[id - 1]->adj_vertex.size(); i++)
     {
         cout << vArr[id - 1]->adj_vertex.at(i) << " ";
@@ -103,6 +107,7 @@ void graph::deletion(int id)
         vArr[id - 1]->adj_weight.resize(0);
         vArr[id - 1]->inserted = false;
 
+        //find the parent vertices and delete from it's adjacency list
         for (int i = 0; i < vArr[id - 1]->parent_vertex.size(); i++)
         {
             int parent_id = vArr[id - 1]->parent_vertex.at(i);
@@ -155,6 +160,7 @@ void graph::getMST(int id)
 
         while (heap.size() != 0)
         {
+            //extract the max
             vertex *MST = heap[0];
             swap(heap[0], heap.back());
             heap.pop_back();
@@ -165,6 +171,7 @@ void graph::getMST(int id)
                 break;
             }
 
+            //if it is already searched, dont push to make a loop
             bool search = false;
             int i = 0;
             while (i < mst.size())
@@ -176,6 +183,7 @@ void graph::getMST(int id)
                 i++;
             }
 
+            //else push in the mst vector 
             if (search == false)
             {
                 mst.push_back(MST->id);

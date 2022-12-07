@@ -1,6 +1,7 @@
 #include "vertex.hpp"
 
 vertex::vertex(){
+    //initializing variables and vectors 
     m_key = -1;
     id = 0;
     inserted = false;
@@ -10,6 +11,7 @@ vertex::vertex(){
 }
 
 vertex::~vertex(){
+    //clear vectors
     adj_vertex.clear();
     adj_weight.clear();
     parent_vertex.clear();
